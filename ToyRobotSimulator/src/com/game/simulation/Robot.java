@@ -67,9 +67,13 @@ public class Robot {
 	private Direction getNewDirection(final Command command) {
 		final List<Direction> values = Arrays.asList(Direction.values());
 		final int oldIndex = values.indexOf(position.getDirection());
+		// Moves back in the list to pickup next direction and if start then move to
+		// last
 		if (Command.LEFT.equals(command)) {
 			return oldIndex == 0 ? values.get(values.size() - 1) : values.get(oldIndex - 1);
 		}
+		// Moves forward in the list to pickup next direction and if end the move to
+		// first
 		if (Command.RIGHT.equals(command)) {
 			return oldIndex == (values.size() - 1) ? values.get(0) : values.get(oldIndex + 1);
 		}
